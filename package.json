@@ -1,0 +1,42 @@
+{
+  "name": "ConvertImagesToWebp",
+  "version": "1.0.0",
+  "description": "Api para conversão de imagens JPEG e PNG para WEBP",
+  "main": "index.js",
+  "author": "Maicon Parra da Silva",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.27",
+    "@types/sequelize": "^4.28.9",
+    "@types/uuid": "^8.3.0",
+    "@types/validator": "^13.1.0",
+    "aws-sdk": "^2.1018.0",
+    "axios": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "multer-s3": "^2.10.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0",
+    "uuid": "^8.3.0",
+    "webp-converter": "^2.3.3"
+  }
+}
