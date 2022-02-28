@@ -18,5 +18,5 @@ console.log(environment);
 
 export const connect = mongoose.connect(connectionMongoose.toString(), {
     useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    useUnifiedTopology: true
 });
