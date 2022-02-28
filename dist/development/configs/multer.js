@@ -1,19 +1,19 @@
-import multer from 'multer';
-import path from 'path';
-import crypto from 'crypto'; 
-import multerS3 from 'multer-s3';
-import aws from 'aws-sdk';
-import dotenv from 'dotenv';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _multer = require('multer'); var _multer2 = _interopRequireDefault(_multer);
+var _path = require('path'); var _path2 = _interopRequireDefault(_path);
+var _crypto = require('crypto'); var _crypto2 = _interopRequireDefault(_crypto); 
+var _multers3 = require('multer-s3'); var _multers32 = _interopRequireDefault(_multers3);
+var _awssdk = require('aws-sdk'); var _awssdk2 = _interopRequireDefault(_awssdk);
+var _dotenv = require('dotenv'); var _dotenv2 = _interopRequireDefault(_dotenv);
 
-dotenv.config();
+_dotenv2.default.config();
 
 const storageTypes = {
-    local: multer.diskStorage({
+    local: _multer2.default.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'));
+            cb(null, _path2.default.resolve(__dirname, '..', '..', 'tmp', 'uploads'));
         },
         filename: (req, file, cb) => {
-            crypto.randomBytes(16, (err, hash) => {
+            _crypto2.default.randomBytes(16, (err, hash) => {
                 if (err) cb(err);
 
                 const fileName = `${hash.toString('hex')}-${file.originalname}`;
@@ -40,13 +40,13 @@ const storageTypes = {
             cb(new Error('Invalid file mime type.'));
         }
     },
-    s3: multerS3({
-        s3: new aws.S3(),
+    s3: _multers32.default.call(void 0, {
+        s3: new _awssdk2.default.S3(),
         bucket: 'apitesteupload',
-        contentType: multerS3.AUTO_CONTENT_TYPE,
+        contentType: _multers32.default.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file, cb) => {
-            crypto.randomBytes(16, (err, hash) => {
+            _crypto2.default.randomBytes(16, (err, hash) => {
                 if (err) cb(err);
 
                 const fileName = `${hash.toString('hex')}-${file.originalname}`;
@@ -56,14 +56,14 @@ const storageTypes = {
     })
 };
 
-export const multerConfig  = {
-    dest: path.resolve(__dirname, '..', 'tmp', 'uploads'),
-    storage: multer.diskStorage({
+ const multerConfig  = {
+    dest: _path2.default.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
+    storage: _multer2.default.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, path.resolve(__dirname, '..', 'tmp', 'uploads'));
+            cb(null, _path2.default.resolve(__dirname, '..', '..', 'tmp', 'uploads'));
         },
         filename: (req, file, cb) => {
-            crypto.randomBytes(16, (err, hash) => {
+            _crypto2.default.randomBytes(16, (err, hash) => {
                 if (err) cb(err);
 
                 const fileName = `${hash.toString('hex')}-${file.originalname}`;
@@ -89,4 +89,4 @@ export const multerConfig  = {
             cb(new Error('Invalid file mime type.'));
         }
     }
-};
+}; exports.multerConfig = multerConfig;

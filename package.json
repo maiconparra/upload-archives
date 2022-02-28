@@ -7,8 +7,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+    "start": "node dist/production/index.js production",
+    "dev": "nodemon src/index.ts development",
+    "approval": "node dist/development/index.js approval",
+    "dev-build": "sucrase ./src -d ./dist/development --transforms typescript,imports",
+    "production-build": "tsc"
   },
   "devDependencies": {
     "@types/cors": "^2.8.7",
@@ -17,9 +20,11 @@
     "@typescript-eslint/parser": "^3.9.0",
     "nodemon": "^2.0.4",
     "sucrase": "^3.15.0",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^14.0.27",
     "@types/sequelize": "^4.28.9",
     "@types/uuid": "^8.3.0",
@@ -27,7 +32,7 @@
     "aws-sdk": "^2.1018.0",
     "axios": "^0.21.0",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",

@@ -1,0 +1,4 @@
+yarn run v1.22.17
+$ node dist/production/index.js production
+[ 'production' ]
+[0mPOST /uploadImages [32m200[0m 212.454 ms - 263[0m

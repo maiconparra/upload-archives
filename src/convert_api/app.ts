@@ -32,7 +32,7 @@ class App {
     }*/
 
     private mongoConnect(): void {
-      connect;
+      connect.environment;
     }
 
     private routes(): void {

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { request } from 'http';
 
 import * as webp from 'webp-converter';
+import * as path from 'path';
 
 import { ImageModel } from '../../convert_business/models/mongodb/image.model';
 
@@ -23,7 +24,7 @@ export default class ConvertImageController {
 
     public async uploadFile(req: Request, res: Response): Promise<Response> {
 
-        const { originalname: name, size, key } = req.file; 
+        const { filename: name, size, destination: key } = req.file; 
 
         const image = await ImageModel.create({
             name,
@@ -45,5 +46,9 @@ export default class ConvertImageController {
         });
 
         return res.json(image);
+    }
+
+    public async home(req: Request, res: Response): Promise<any> {
+        return res.sendFile(path.join(__dirname,'../app.html'));
     }
 }
